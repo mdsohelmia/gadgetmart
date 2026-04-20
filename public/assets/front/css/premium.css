@@ -1,0 +1,329 @@
+/* ============================================================
+   GadgetHub — Premium Theme Overrides
+   Layered atop styles.min.css. Safe to toggle by removing link.
+   ============================================================ */
+
+:root {
+    --gh-bg: #ffffff;
+    --gh-surface: #fafafa;
+    --gh-surface-2: #f4f5f7;
+    --gh-border: #e7e8ec;
+    --gh-border-strong: #d8dae0;
+    --gh-text: #1a1d23;
+    --gh-text-muted: #5b6170;
+    --gh-text-dim: #8a8f9c;
+    --gh-accent: #d4a24a;          /* warm gold */
+    --gh-accent-hover: #b4853a;
+    --gh-accent-soft: #f5ecd8;
+    --gh-success: #1f8f5a;
+    --gh-danger: #c4453b;
+    --gh-radius-sm: 6px;
+    --gh-radius: 10px;
+    --gh-radius-lg: 14px;
+    --gh-shadow-xs: 0 1px 2px rgba(16, 24, 40, 0.04);
+    --gh-shadow-sm: 0 2px 6px rgba(16, 24, 40, 0.05), 0 1px 2px rgba(16, 24, 40, 0.04);
+    --gh-shadow: 0 8px 24px -8px rgba(16, 24, 40, 0.12), 0 2px 4px rgba(16, 24, 40, 0.04);
+    --gh-shadow-lg: 0 24px 48px -12px rgba(16, 24, 40, 0.18);
+    --gh-ease: cubic-bezier(0.4, 0, 0.2, 1);
+    --gh-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --gh-font-display: 'Playfair Display', Georgia, serif;
+}
+
+/* ---------- Base ---------- */
+body,
+body.body_theme1,
+body.body_theme2,
+body.body_theme3,
+body.body_theme4 {
+    font-family: var(--gh-font-sans);
+    color: var(--gh-text);
+    background: var(--gh-bg);
+    font-feature-settings: 'ss01', 'cv11';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: -0.01em;
+}
+
+h1, h2, h3, h4, h5, h6,
+.section-title h2,
+.section-title h3 {
+    font-family: var(--gh-font-display);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--gh-text);
+}
+
+h1 { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.15; }
+h2 { font-size: clamp(1.6rem, 3vw, 2.25rem); line-height: 1.2; }
+
+p { color: var(--gh-text-muted); line-height: 1.7; }
+
+a { transition: color 0.2s var(--gh-ease); }
+a:hover { text-decoration: none; }
+
+/* ---------- Section rhythm ---------- */
+section,
+.section-padding {
+    padding-top: clamp(40px, 6vw, 80px);
+    padding-bottom: clamp(40px, 6vw, 80px);
+}
+
+.section-title { margin-bottom: 36px; }
+.section-title h2::before { background: var(--gh-accent); }
+
+/* ---------- Buttons ---------- */
+.btn,
+button.btn,
+.theme-btn,
+.product-card .product-button,
+.product-card .product-button-group .product-button {
+    font-family: var(--gh-font-sans);
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    border-radius: var(--gh-radius-sm);
+    transition: transform 0.2s var(--gh-ease),
+                box-shadow 0.2s var(--gh-ease),
+                background 0.2s var(--gh-ease),
+                color 0.2s var(--gh-ease);
+    border: 1px solid transparent;
+}
+
+.btn:hover,
+.theme-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--gh-shadow-sm);
+}
+
+.btn-primary,
+.theme-btn {
+    background: var(--gh-text);
+    color: #fff;
+    border-color: var(--gh-text);
+}
+
+.btn-primary:hover,
+.theme-btn:hover {
+    background: var(--gh-accent);
+    border-color: var(--gh-accent);
+    color: #fff;
+}
+
+.btn-outline,
+.btn-outline-primary {
+    background: transparent;
+    color: var(--gh-text);
+    border-color: var(--gh-border-strong);
+}
+
+.btn-outline:hover,
+.btn-outline-primary:hover {
+    background: var(--gh-text);
+    color: #fff;
+    border-color: var(--gh-text);
+}
+
+/* ---------- Cards ---------- */
+.card,
+.product-card,
+.blog-card,
+.category-card {
+    background: var(--gh-bg);
+    border: 1px solid var(--gh-border);
+    border-radius: var(--gh-radius);
+    box-shadow: var(--gh-shadow-xs);
+    transition: transform 0.3s var(--gh-ease),
+                box-shadow 0.3s var(--gh-ease),
+                border-color 0.3s var(--gh-ease);
+    overflow: hidden;
+}
+
+.card:hover,
+.product-card:hover,
+.blog-card:hover,
+.category-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--gh-shadow);
+    border-color: var(--gh-border-strong);
+}
+
+.product-card img {
+    transition: transform 0.5s var(--gh-ease);
+}
+
+.product-card:hover img {
+    transform: scale(1.04);
+}
+
+/* ---------- Header ---------- */
+.site-header,
+.navbar-sticky {
+    background: var(--gh-bg);
+    border-bottom: 1px solid var(--gh-border);
+    box-shadow: var(--gh-shadow-xs);
+    backdrop-filter: saturate(1.2);
+}
+
+.navbar-sticky.stuck {
+    box-shadow: var(--gh-shadow-sm);
+}
+
+.menu-top-area {
+    background: var(--gh-text) !important;
+    color: #fff;
+}
+
+/* ---------- Forms ---------- */
+.form-control,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+select,
+textarea {
+    background: var(--gh-bg);
+    border: 1px solid var(--gh-border);
+    border-radius: var(--gh-radius-sm);
+    padding: 12px 14px;
+    color: var(--gh-text);
+    transition: border-color 0.2s var(--gh-ease), box-shadow 0.2s var(--gh-ease);
+    font-family: var(--gh-font-sans);
+}
+
+.form-control:focus,
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--gh-accent);
+    box-shadow: 0 0 0 3px var(--gh-accent-soft);
+}
+
+/* ---------- Pricing ---------- */
+.product-card .price,
+.product-price,
+.current-price,
+span.price {
+    color: var(--gh-text);
+    font-weight: 600;
+    font-size: 1.05em;
+}
+
+del, .old-price, .regular-price {
+    color: var(--gh-text-dim);
+    opacity: 0.75;
+}
+
+/* ---------- Badges ---------- */
+.badge,
+.product-card .ribbon,
+.sale-badge {
+    padding: 4px 10px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    border-radius: var(--gh-radius-sm);
+}
+
+/* ---------- Footer ---------- */
+.site-footer,
+.footer-area {
+    background: var(--gh-text);
+    color: rgba(255, 255, 255, 0.7);
+    padding-top: 60px;
+}
+
+.site-footer h3,
+.site-footer h4,
+.footer-area h3,
+.footer-area h4 {
+    color: #fff;
+    font-family: var(--gh-font-sans);
+    font-weight: 600;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 20px;
+}
+
+.site-footer a,
+.footer-area a {
+    color: rgba(255, 255, 255, 0.65);
+    transition: color 0.2s var(--gh-ease);
+}
+
+.site-footer a:hover,
+.footer-area a:hover {
+    color: var(--gh-accent);
+}
+
+.footer-social-links a {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s var(--gh-ease), transform 0.2s var(--gh-ease);
+}
+
+.footer-social-links a:hover {
+    background: var(--gh-accent);
+    transform: translateY(-2px);
+}
+
+/* ---------- Accents from admin primary color reconciled ---------- */
+.section-title h2::before,
+.pagination li.active span,
+.pagination li.active a,
+.nav-tabs .nav-link.active {
+    background: var(--gh-accent) !important;
+}
+
+/* ---------- Subtle polish ---------- */
+img { max-width: 100%; height: auto; }
+
+::selection {
+    background: var(--gh-accent);
+    color: #fff;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--gh-surface); }
+::-webkit-scrollbar-thumb {
+    background: var(--gh-border-strong);
+    border-radius: 5px;
+    border: 2px solid var(--gh-surface);
+}
+::-webkit-scrollbar-thumb:hover { background: var(--gh-text-dim); }
+
+/* Preloader */
+#preloader {
+    background: var(--gh-bg);
+}
+
+/* Hero / banner subtle */
+.hero-section,
+.banner-section,
+.main-slider {
+    background: var(--gh-surface);
+}
+
+/* Sections with light alternating bg */
+.bg-light,
+.section-gray {
+    background: var(--gh-surface) !important;
+}
+
+/* ---------- Compare feature removed ---------- */
+.product_compare,
+.compare-mobile,
+.compare-icon-wrap,
+a[href*="/compare"],
+.toolbar-item:has(a[href*="compare"]) {
+    display: none !important;
+}

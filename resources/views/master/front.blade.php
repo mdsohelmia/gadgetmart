@@ -53,6 +53,12 @@
         href="{{ asset('assets/front/css/color.php?primary_color=') . str_replace('#', '', $setting->primary_color) }}"
         rel="stylesheet">
 
+    <!-- Premium theme overrides -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap">
+    <link rel="stylesheet" media="screen" href="{{ asset('assets/front/css/premium.css') }}">
+
     <!-- Modernizr-->
     <script src="{{ asset('assets/front/js/modernizr.min.js') }}"></script>
 
@@ -114,8 +120,6 @@ body_theme4 @endif
                         <div class="t-m-s-a">
                             <a class="track-order-link" href="{{ route('front.order.track') }}"><i
                                     class="icon-map-pin"></i>{{ __('Track Order') }}</a>
-                            <a class="track-order-link compare-mobile d-lg-none"
-                                href="{{ route('fornt.compare.index') }}">{{ __('Compare') }}</a>
                         </div>
                     </div>
                     <div class="col-md-8">
@@ -230,13 +234,6 @@ body_theme4 @endif
                                     </a>
                                 </div>
 
-                                <div class="toolbar-item hidden-on-mobile"><a
-                                        href="{{ route('fornt.compare.index') }}">
-                                        <div><span class="compare-icon"><i class="icon-repeat"></i><span
-                                                    class="count-label compare_count">{{ Session::has('compare') ? count(Session::get('compare')) : '0' }}</span></span><span
-                                                class="text-label">{{ __('Compare') }}</span></div>
-                                    </a>
-                                </div>
                                 @if (Auth::check())
                                     <div class="toolbar-item hidden-on-mobile"><a
                                             href="{{ route('user.wishlist.index') }}">
@@ -530,11 +527,6 @@ body_theme4 @endif
     <!-- Backdrop-->
     <div class="site-backdrop"></div>
 
-    <!-- Cookie alert dialog  -->
-    @if ($setting->is_cookie == 1)
-        @include('cookie-consent::index')
-    @endif
-    <!-- Cookie alert dialog  -->
 
 
     @php
