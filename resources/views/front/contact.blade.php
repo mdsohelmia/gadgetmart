@@ -112,19 +112,6 @@
                   </div>
                 </div>
                 <input type="text" name="honeypot" id="honeypot" value="" style="display:none;">
-                @if ($setting->recaptcha == 1)
-                <div class="col-lg-12 mb-4">
-                    {!! NoCaptcha::renderJs() !!}
-                    {!! NoCaptcha::display() !!}
-                    @if ($errors->has('g-recaptcha-response'))
-                    @php
-                        $errmsg = $errors->first('g-recaptcha-response');
-                    @endphp
-                    <p class="text-danger mb-0">{{__("$errmsg")}}</p>
-                    @endif
-                </div>
-                @endif
-
 
                 <div class="col-12 text-right">
                     <!-- Show toastr after succesfull submit -->

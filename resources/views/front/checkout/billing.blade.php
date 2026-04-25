@@ -132,11 +132,9 @@
                                 <div class="form-group">
                                     <div class="custom-control custom-checkbox">
                                         <input class="custom-control-input" type="checkbox" id="trams__condition">
-                                        <label class="custom-control-label" for="trams__condition">This site is protected
-                                            by reCAPTCHA and the <a href="{{ $setting->policy_link }}"
+                                        <label class="custom-control-label" for="trams__condition">I agree to the <a href="{{ $setting->policy_link }}"
                                                 target="_blank">Privacy Policy</a> and <a
-                                                href="{{ $setting->terms_link }}" target="_blank">Terms of Service</a>
-                                            apply.</label>
+                                                href="{{ $setting->terms_link }}" target="_blank">Terms of Service</a>.</label>
                                     </div>
                                 </div>
                             @endif

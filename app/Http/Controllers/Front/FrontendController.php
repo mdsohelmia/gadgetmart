@@ -49,12 +49,6 @@ class FrontendController extends Controller
     public function __construct(FrontRepository $repository)
     {
         $this->repository = $repository;
-        $setting = Setting::first();
-        if ($setting->recaptcha == 1) {
-            Config::set('captcha.sitekey', $setting->google_recaptcha_site_key);
-            Config::set('captcha.secret', $setting->google_recaptcha_secret_key);
-        }
-
         $this->middleware('localize');
     }
 
@@ -440,7 +434,6 @@ class FrontendController extends Controller
         $setting = Setting::first();
 
         $request->validate([
-            'g-recaptcha-response' => $setting->recaptcha == 1 ? 'required|captcha' : '',
             'first_name' => 'required|max:50',
             'last_name' => 'required|max:50',
             'email' => 'required|email|max:50',

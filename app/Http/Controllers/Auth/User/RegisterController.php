@@ -10,7 +10,6 @@ use App\{
 use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Session;
 
 class RegisterController extends Controller
@@ -28,13 +27,6 @@ class RegisterController extends Controller
     public function __construct(UserRepository $repository)
     {
         $this->repository = $repository;
-
-        $setting = Setting::first();
-        if ($setting->recaptcha == 1) {
-          Config::set('captcha.sitekey', $setting->google_recaptcha_site_key);
-          Config::set('captcha.secret', $setting->google_recaptcha_secret_key);
-          
-        }
     }
 
 

@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Setting;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,12 +26,10 @@ class UserRequest extends FormRequest
     {
 
         $id = Auth::check() ? ',' . Auth::user()->id : '';
-        $setting = Setting::first();
         $password = Auth::check() ? '' : 'required|';
         $check = Auth::check() ? 'nullable|min:6|max:16' : "min:6|max:16|confirmed";
 
         return [
-            'g-recaptcha-response' => $setting->recaptcha == 1 ? 'required|captcha' : 'nullable',
             'first_name' => $password.'|max:255',
             'photo'      => [
             'mimes:jpeg,jpg,png,svg', 
@@ -70,7 +67,6 @@ class UserRequest extends FormRequest
     public function messages()
     {
         return [
-            'g-recaptcha-response.required' => __('Please verify that you are not a robot.'),
             'first_name.required' => __('First Name is required.'),
             'last_name.required' => __('Last Name field is required.'),
             'country.required' => __('Country is required.'),
@@ -81,8 +77,6 @@ class UserRequest extends FormRequest
             'email.required' => __('Email field is required.'),
             'email.email'   => __('The email must be a valid email address.'),
             'password.required'    => __('Password field is required.'),
-            'g-recaptcha-response.required' => __('Please verify that you are not a robot.'),
-            'g-recaptcha-response.captcha' => __('Captcha error! try again later or contact site admin.'),
             'honeypot.max' => __('Please verify that you are not a robot.'),
         ];
     }

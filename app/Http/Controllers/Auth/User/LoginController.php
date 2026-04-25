@@ -12,21 +12,13 @@ use App\Models\Setting;
 use App\Models\User;
 use Auth;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
   public function __construct()
   {
-
     $this->middleware('guest', ['except' => ['logout', 'userLogout', 'verifySubmit']]);
-
-    $setting = Setting::first();
-    if ($setting->recaptcha == 1) {
-      Config::set('captcha.sitekey', $setting->google_recaptcha_site_key);
-      Config::set('captcha.secret', $setting->google_recaptcha_secret_key);
-    }
   }
 
   public function showForm()

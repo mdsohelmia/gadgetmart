@@ -196,7 +196,6 @@ return [
         App\Providers\RouteServiceProvider::class,
         Srmklive\PayPal\Providers\PayPalServiceProvider::class,
         Paytabscom\Laravel_paytabs\PaypageServiceProvider::class,
-        Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
     ],
 
     /*
@@ -215,7 +214,6 @@ return [
         'OrderHelper' => App\Helpers\OrderHelper::class,
         'PriceHelper' => App\Helpers\PriceHelper::class,
         'Helper' => App\Helpers\Helper::class,
-        'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
     ])->toArray(),
 
 ];

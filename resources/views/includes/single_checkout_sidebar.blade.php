@@ -150,11 +150,8 @@
                         <div class="custom-control d-flex custom-checkbox">
                             <input class="custom-control-input me-2" type="checkbox" id="trams__condition_single"
                                 value="">
-                            <label class="custom-control-label flex-1" for="trams__condition">This site is protected by
-                                reCAPTCHA
-                                and the <a href="{{ $setting->policy_link }}" target="_blank">Privacy Policy</a> and <a
-                                    href="{{ $setting->terms_link }}" target="_blank">Terms of Service</a>
-                                apply.</label>
+                            <label class="custom-control-label flex-1" for="trams__condition">I agree to the <a href="{{ $setting->policy_link }}" target="_blank">Privacy Policy</a> and <a
+                                    href="{{ $setting->terms_link }}" target="_blank">Terms of Service</a>.</label>
                         </div>
                     </div>
                 @endif

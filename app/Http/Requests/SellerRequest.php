@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Setting;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,12 +26,10 @@ class SellerRequest extends FormRequest
     {
 
         $id = Auth::check() ? ',' . Auth::user()->id : '';
-        $setting = Setting::first();
         $password = Auth::check() ? '' : 'required|';
         $check = Auth::check() ? 'nullable|min:6|max:16' : "min:6|max:16|confirmed";
 
         return [
-            'g-recaptcha-response' => $setting->recaptcha == 1 ?  $password : '',
             'first_name' => $password . '|max:255',
             'last_name'  => 'required|max:255',
             'phone'      => 'required|max:255',
@@ -52,7 +49,6 @@ class SellerRequest extends FormRequest
     public function messages()
     {
         return [
-            'g-recaptcha-response.required' => __('Please verify that you are not a robot.'),
             'first_name.required' => __('First Name is required.'),
             'last_name.required' => __('Last Name field is required.'),
             'phone.required' => __('Phone Number is required.'),

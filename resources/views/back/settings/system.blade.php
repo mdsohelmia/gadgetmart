@@ -52,7 +52,7 @@
                                         <a class="nav-link" data-toggle="pill" href="#custom_css"
                                             id="newcss">{{ __('Custom Css') }}</a>
                                         <a class="nav-link" data-toggle="pill"
-                                            href="#google_recaptcha">{{ __('Scripts') }}</a>
+                                            href="#scripts">{{ __('Scripts') }}</a>
                                         <a class="nav-link" data-toggle="pill"
                                             href="#shop">{{ __('Shop & Checkout Page') }}</a>
                                         <a class="nav-link" data-toggle="pill"
@@ -585,7 +585,7 @@
 
                                                 </div>
 
-                                                <div id="google_recaptcha" class="tab-pane"><br>
+                                                <div id="scripts" class="tab-pane"><br>
                                                     <div class="row justify-content-center">
 
                                                         <div class="col-lg-8">
@@ -622,38 +622,6 @@
                                                             <div class="form-group">
                                                                 <label>{{ __('Google Adsense Code') }} *</label>
                                                                 <textarea name="google_adsense" class="form-control" id="" placeholder="{{ __('Google Adsense Code') }}">{{ $setting->google_adsense }}</textarea>
-                                                            </div>
-
-
-                                                            <hr>
-
-                                                            <div class="form-group">
-                                                                <label class="switch-primary">
-                                                                    <input type="checkbox"
-                                                                        class="switch switch-bootstrap status"
-                                                                        name="recaptcha" value="1"
-                                                                        {{ $setting->recaptcha == 1 ? 'checked' : '' }}>
-                                                                    <span class="switch-body"></span>
-                                                                    <span
-                                                                        class="switch-text">{{ __('Display Google Recaptcha') }}</span>
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label
-                                                                    for="google_recaptcha_site_key">{{ __('Google Rechaptcha Site Key') }}
-                                                                    *</label>
-                                                                <input type="text" name="google_recaptcha_site_key"
-                                                                    class="form-control" id="google_recaptcha_site_key"
-                                                                    placeholder="{{ __('Google Rechaptcha Site Key') }}"
-                                                                    value="{{ $setting->google_recaptcha_site_key }}">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label
-                                                                    for="google_recaptcha_secret_key">{{ __('Google Rechaptcha Secret Key') }}</label>
-                                                                <input type="text" name="google_recaptcha_secret_key"
-                                                                    class="form-control" id="google_recaptcha_secret_key"
-                                                                    placeholder="{{ __('Google Rechaptcha Secret Key') }}"
-                                                                    value="{{ $setting->google_recaptcha_secret_key }}">
                                                             </div>
 
 
