@@ -15,7 +15,8 @@ class ImageHelper
                 Storage::delete($path . '/' . $delete);
             }
 
-            $name = Str::random(4) . $file->getClientOriginalName();
+            $extension = $file->getClientOriginalExtension() ?: $file->guessExtension();
+            $name = 'IMG_' . time() . Str::random(8) . ($extension ? '.' . $extension : '');
             Storage::putFileAs($path, $file, $name);
 
             return $name;

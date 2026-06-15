@@ -15,11 +15,11 @@
     <meta name="description" content="{{ $post->meta_descriptions }}">
 
     <meta name="twitter:title" content="{{ $post->title }}">
-    <meta name="twitter:image" content="{{ url('/storage/images/' . json_decode($post->photo, true)[0]) }}">
+    <meta name="twitter:image" content="{{ ($photos = json_decode($post->photo, true)) ? url('/storage/images/' . $photos[array_key_first($photos)]) : url('/storage/images/placeholder.png') }}">
     <meta name="twitter:description" content="{{ $post->meta_descriptions }}">
 
     <meta name="og:title" content="{{ $post->title }}">
-    <meta name="og:image" content="{{ url('/storage/images/' . json_decode($post->photo, true)[0]) }}">
+    <meta name="og:image" content="{{ ($photos = json_decode($post->photo, true)) ? url('/storage/images/' . $photos[array_key_first($photos)]) : url('/storage/images/placeholder.png') }}">
     <meta name="og:description" content="{{ $post->meta_descriptions }}">
 
 @endsection
@@ -52,7 +52,7 @@
                     <!-- Gallery-->
                     <div class="blog-details-slider owl-carousel">
 
-                        @foreach (json_decode($post->photo, true) as $photo)
+                        @foreach (json_decode($post->photo, true) ?: [] as $photo)
                             <img src="{{ url('/storage/images/' . $photo) }}" alt="Image">
                         @endforeach
                     </div>
@@ -158,7 +158,7 @@
                         @foreach ($posts as $recent)
                             <div class="entry">
                                 <div class="entry-thumb"><a href="{{ route('front.blog.details', $recent->slug) }}"><img
-                                            src="{{ url('/storage/images/' . json_decode($recent->photo, true)[array_key_first(json_decode($recent->photo, true))]) }}"
+                                            src="{{ ($photos = json_decode($recent->photo, true)) ? url('/storage/images/' . $photos[array_key_first($photos)]) : url('/storage/images/placeholder.png') }}"
                                             alt="Post"></a></div>
                                 <div class="entry-content">
                                     <h4 class="entry-title"><a href="{{ route('front.blog.details', $recent->slug) }}">

@@ -70,7 +70,7 @@ class PostRepository
     public function UpdateImageData($request, $post)
     {
 
-        $storeData = json_decode($post->photo, true);
+        $storeData = json_decode($post->photo, true) ?: [];
 
         if ($photos = $request->file('photo')) {
             foreach ($photos as $key => $photo) {
@@ -91,7 +91,7 @@ class PostRepository
 
     public function delete($post)
     {
-        $images = json_decode($post->photo, true);
+        $images = json_decode($post->photo, true) ?: [];
         foreach ($images as $image) {
             // if (file_exists(base_path('../').'assets/images/'.$image)) {
             //     unlink(base_path('../').'assets/images/'.$image);
@@ -111,11 +111,14 @@ class PostRepository
     public function photoDelete($key, $id)
     {
         $post = Post::findOrFail($id);
-        $photos = json_decode($post->photo, true);
-        $delete_photo = $photos[$key];
+        $photos = json_decode($post->photo, true) ?: [];
 
-        Storage::delete("images" . '/' . $delete_photo);
-       
+        if (! isset($photos[$key])) {
+            return;
+        }
+
+        Storage::delete("images" . '/' . $photos[$key]);
+
         unset($photos[$key]);
         $new_photos = json_encode($photos, true);
         $post->update(['photo' => $new_photos]);
